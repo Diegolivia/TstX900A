@@ -1,0 +1,37 @@
+dotnet new sln –n Event
+dotnet new webapi –n Event.Api
+dotnet new classlib –n Event.Domain
+dotnet new classlib –n Event.Repository
+dotnet new classlib –n Event.Service
+dotnet add Event.Repository/Event.Repository.csproj reference Event.Domain/Event.Domain.csproj
+dotnet add Event.Service/Event.Service.csproj reference Event.Repository/Event.Repository.csproj
+dotnet add Event.Service/Event.Service.csproj reference Event.Domain/Event.Domain.csproj
+dotnet add Event.Api/Event.Api.csproj reference Event.Domain/Event.Domain.csproj
+dotnet add Event.Api/Event.Api.csproj reference Event.Service/Event.Service.csproj
+dotnet sln Event.sln add Event.Api/Event.Api.csproj Event.Repository/Event.Repository.csproj Event.Domain/Event.Domain.csproj Event.Service/Event.Service.csproj
+dotnet build
+
+dotnet run para cargar backend
+
+//Dentro de Event.Api
+
+dotnet ef --startup-project ../Event.Api migrations add init
+dotnet ef --startup-project ../Event.Api database update
+
+
+//VUE
+//Colocate en el frontend
+mpm install -g @vue/cli
+vue create hospital
+-Manually
+--(x)Babel
+--(x)Router
+--(x)Vuex
+--(x)Linter
+Y
+json
+N
+cd hospital
+
+npm run serve para cargar frontend
+
