@@ -1,0 +1,4 @@
+#Instalar paquete swagger
+Swashbuckle.AspNetCore 
+
+
